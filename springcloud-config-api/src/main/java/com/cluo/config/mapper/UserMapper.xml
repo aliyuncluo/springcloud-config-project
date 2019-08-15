@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cluo.config.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.cluo.config.domain.UserInfo">
+        <id column="id" property="id" jdbcType="BIGINT"></id>
+        <result column="name" property="name" jdbcType="VARCHAR"></result>
+        <result column="sex" property="sex" jdbcType="VARCHAR"></result>
+        <result column="age" property="age" jdbcType="INTEGER"></result>
+        <result column="phone" property="phone" jdbcType="VARCHAR"></result>
+        <result column="address" property="address" jdbcType="VARCHAR"></result>
+    </resultMap>
+    <sql id="BaseColumnList">
+        id,
+        `name`,
+        sex,
+        age,
+        phone,
+        address
+    </sql>
+
+    <select id="selectUserInfo" resultType="map">
+        select
+        <include refid="BaseColumnList"/>
+        from  t_user
+    </select>
+</mapper>
